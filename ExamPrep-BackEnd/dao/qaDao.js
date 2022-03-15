@@ -1,42 +1,40 @@
-const db = require('../database')
+// const db = require('../database')
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/examprep')
+
+
+const questionSchema = new mongoose.Schema(
+    {_id:Number,question:String,choices:{ca:String,cb:String,cc:String,cd:String},
+    answer:String})
+
+const questionModel = new mongoose.model("Question", questionSchema)
+
 
 // retrieve all qas
-exports.getAll = function(){
-    return db.qas
+exports.getAll = async function(){
+    const all = await questionModel.find({}).exec();
+    console.log(all)
+    return all
 }
 
 // retrieve a qa by id
-exports.getById = function(id){
-    return db.qas.filter(s => s.id==id)
+exports.getById = async function(id){
+    const filter = {_id: id};
+    const question = await questionModel.find(filter);
+    return question   
 }
 
 // add a qa
-exports.addOne = function(qa){
-    db.qas.push(qa)
-    return true
+exports.addOne = async function(qa){
+    const q1 = new questionModel(qa)
+    const val = await q1.save()
+    console.log("saved")
+    console.log(val)
 }
 
 // delete a qa by id
-exports.removeOne = function(id){
-    db.qas = db.qas.filter(s => s.id != id)
-    return true
-}
-
-// replace a qa
-exports.replaceOne = function(qa){
-    db.qas = db.qas.filter(s => s.id != qa.id)
-    db.qas.push(qa)
-    return true
-}
-
-// add image to qa
-exports.addImage = function(id, imageName){
-    const target = db.qas.filter(s=>s.id==id)
-    if(target.length>0){
-        target[0].picture = imageName
-        return true
-    }
-    return false
+exports.removeOne = async function(id){
+    questionModel.findByIdAndRemove(id)
 }
 
 
