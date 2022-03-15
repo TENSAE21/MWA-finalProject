@@ -40,10 +40,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { PostCreateComponent } from './quesions/q-and-a-create/post-create.component';
 import { HeaderComponent } from './header/header.component';
-import { PostListComponent } from './posts/post-list/post-list.component';
-import { QuestionService } from './posts/question.service';
+import { PostListComponent } from './quesions/question-list/post-list.component';
+import { QuestionService } from './quesions/question.service';
+import { UserListComponent } from './users/user-list/user-list.component';
+
 //import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -51,7 +53,8 @@ import { QuestionService } from './posts/question.service';
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
