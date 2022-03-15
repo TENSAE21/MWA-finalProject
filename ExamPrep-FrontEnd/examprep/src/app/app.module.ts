@@ -4,9 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-
 import { QuestionsComponent } from './questions/questions.component';
 import { ShowQuestionComponent } from './show-question/show-question.component';
+
+
+import { AppRoutingModule} from './app-routing.module';
+import { PostsModule } from './posts/posts.module';
+import {HttpClientModule} from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -17,12 +22,9 @@ import { ShowQuestionComponent } from './show-question/show-question.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: AppComponent },
-      { path: 'questions', component: QuestionsComponent },
-      { path: 'show', component: ShowQuestionComponent }
-      // { path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) }
-    ])
+    PostsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
