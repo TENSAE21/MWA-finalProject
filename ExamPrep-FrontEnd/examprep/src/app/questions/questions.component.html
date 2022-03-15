@@ -1,0 +1,34 @@
+<p>questions works!</p>
+<div class="container">
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>New Question</h1>
+
+<form [formGroup]="newQuestionForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="question">Question:</label>
+      <input type="text" class="form-control" id="question" formControlName="question">
+    </div>
+
+      <div formArrayName="choices">
+        <h5>Choices</h5>
+        <div class="form-group" *ngFor="let choice of choicesArray.controls; let i = index">
+          <input type="text" class="form-control" formControlName="{{i}}">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-default" (click)="onAddChoice()">Add Choice</button>    
+
+    <div class="form-group">
+    <label for="answer">Answer</label>
+    <input type="text" class="form-control" maxlength="1" id="answer" formControlName="answer">
+    <div *ngIf="!newQuestionForm.get('answer')?.valid">
+      Invalid Choice
+    </div>
+  </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!newQuestionForm.valid">Submit</button>
+  </form>
+  <hr>
+</div>
+</div>
+</div>

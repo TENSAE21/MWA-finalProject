@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from './users/user-list/user-list.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const routes: Routes = [{
-  path:'',component: UserListComponent
-}];
+
+import { AppComponent } from './app.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { ShowQuestionComponent } from './show-question/show-question.component';
+
+
+const routes: Routes = [
+    { path: '', component: AppComponent },
+    { path: 'show-question', component: ShowQuestionComponent },
+    { path: 'list', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)},
+    { path: '**', redirectTo: '/' }
+  ];
+
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,
+    BrowserAnimationsModule,
+      RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { } 
