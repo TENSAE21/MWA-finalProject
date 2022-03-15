@@ -1,0 +1,88 @@
+<form class="example-form" (submit)="onAddQuestion(quesForm)" #quesForm="ngForm">
+  <mat-card>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Add Question</mat-label>
+    <input
+    ngModel
+    name="question"
+    type="text"
+    #question="ngModel"
+    required
+    matInput placeholder="1) Which of the following is used to share data between controller and view in AngularJS?"
+    ><mat-error *ngIf="question.invalid">Please enter a Question</mat-error>
+  </mat-form-field>
+  <mat-grid-list cols="2" rowHeight="12:2">
+    <mat-grid-tile>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Add choice A</mat-label>
+    <textarea
+    name="CA"
+    required
+
+    ngModel
+    #ca="ngModel"
+    matInput placeholder="A)using Model">A)</textarea>
+    <mat-error *ngIf="ca.invalid">Please enter a choice</mat-error>
+  </mat-form-field></mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Add choice B</mat-label>
+        <textarea
+        name="CB"
+        ngModel
+        #cb="ngModel"
+        required
+
+        matInput placeholder="B)using services">B)</textarea>
+        <mat-error *ngIf="cb.invalid">Please enter a choice</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Add choice C</mat-label>
+        <textarea
+        name="CC"
+        ngModel
+        #cc="ngModel"
+        required
+
+        matInput placeholder="C)using Model">C)</textarea>
+        <mat-error *ngIf="cc.invalid">Please enter a choice</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Add choice D</mat-label>
+        <textarea
+        name="CD"
+        ngModel
+        #cd="ngModel"
+        required
+
+         matInput placeholder="D)using Model">D)</textarea>
+         <mat-error *ngIf="cd.invalid">Please enter a choice</mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Add choice</mat-label>
+    <textarea matInput placeholder="A)using Model, B)using services, ... "></textarea>
+  </mat-form-field> -->
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Answer is:</mat-label>
+    <textarea
+    name="Answer"
+    ngModel
+    #ans="ngModel"
+    required
+    matInput placeholder="B"></textarea>
+    <mat-error *ngIf="ans.invalid">Please enter an Answer!</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit"> Submit </button>
+
+</mat-card>
+</form>
+
