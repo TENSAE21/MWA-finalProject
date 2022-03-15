@@ -6,22 +6,22 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { QuestionsComponent } from './questions/questions.component';
-
-import { LoginComponent } from './login/login.component';
-
+import { ShowQuestionComponent } from './show-question/show-question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionsComponent,
-    LoginComponent
+    ShowQuestionComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      // { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent }
+      { path: '', component: AppComponent },
+      { path: 'questions', component: QuestionsComponent },
+      { path: 'show', component: ShowQuestionComponent }
+      // { path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) }
     ])
   ],
   providers: [],
