@@ -1,0 +1,20 @@
+<mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let question of questions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{question.question}}
+        </mat-panel-title>
+        <mat-panel-description>
+            
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{question.ca}}</p>
+      <p>{{question.cb}}</p>
+      <p>{{question.cc}}</p>
+      <p>{{question.cd}}</p>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="deleteQuestion(question)"> Delete </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel >
+  

@@ -1,0 +1,33 @@
+
+
+.example-full-width {
+    width: 100%;
+  }
+  
+  mat-carddd
+  {
+  width: 80%;
+  margin: auto;
+  
+  }
+  
+  button{
+    /*Change the width as much as you like, but make sure
+    margin-left and margin-right + width = 100%*/
+    width:20%;
+    height: 50px; ;
+    margin-left:40%;
+    margin-right:40%;
+  }
+  
+  mat-form-field, textarea{width: 100%;}
+  
+  mmat-grid-list{
+    height: 100px;
+    width: 100px;
+  }
+  mat-grid-tile {
+    background: rgb(217, 230, 235);
+  
+  }
+  
