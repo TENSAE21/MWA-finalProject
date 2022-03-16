@@ -1,0 +1,69 @@
+
+###
+GET http://localhost:3000/api/qa HTTP/1.1
+
+###
+GET http://localhost:3000/api/qa/1 HTTP/1.1
+
+###
+POST http://localhost:3000/api/qa HTTP/1.1
+content-type: application/json
+
+
+{ "_id": "4",
+ "question": "additional question", 
+ "ca":"some choice",
+ "cb":"bleh choice",
+ "cc":"whatever",
+ "cd":"all of the above",
+ "answer":"c" 
+} 
+
+
+# [
+#   {
+#     _id: "1",
+#     question: 'why is JS so fast?',
+#     ca: 'compiles down to c++',
+#     cb: 'runs on top of v8',
+#     cc: 'because of node',
+#     cd: 'none of the above',
+#     answer: 'b',
+#     __v: 0
+#   },
+#   {
+#     _id: "2",
+#     question: 'what is angular?',
+#     ca: 'Framework',
+#     cb: 'Library',
+#     cc: 'Both',
+#     cd: 'none of the above',
+#     answer: 'b',
+#     __v: 0
+#   },
+#   {
+#     _id: "3",
+#     question: 'when is mongoDB approrpriate to use?',
+#     ca: 'when we have json data',
+#     cb: 'when bleh',
+#     cc: 'whatever',
+#     cd: 'all of the above',
+#     answer: 'c',
+#     __v: 0
+#   }
+# ]
+###
+
+DELETE http://localhost:3000/api/qa/2 HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/user/register HTTP/1.1
+content-type: application/json
+
+{ 
+ "fullName": "admin Admin", 
+ "email":"admin@email.com",
+ "role":"ADMIN",
+ "password":"admin"
+} 
