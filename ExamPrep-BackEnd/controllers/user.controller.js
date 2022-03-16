@@ -4,11 +4,27 @@ const _ = require('lodash');
 
 const User = mongoose.model('User');
 
+// get all users
+
+module.exports.getAllUsers =  (req, res) => {
+  User.find({ },
+        (err, foundUsers) => {
+            if (!foundUsers)
+                return res.status(404).json({ status: false, message: 'User record not found.' });
+            else
+                return res.status(200).json(foundUsers);
+        }
+    );
+
+}
+
+
 module.exports.register = (req, res, next) => {
     var user = new User();
     user.fullName = req.body.fullName;
     user.email = req.body.email;
     user.password = req.body.password;
+    user.role= req.body.role;
     user.save((err, doc) => {
         if (!err)
             res.send(doc);
