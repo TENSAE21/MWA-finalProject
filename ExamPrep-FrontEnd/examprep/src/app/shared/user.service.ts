@@ -11,6 +11,7 @@ export class UserService {
   selectedUser: User = {
     fullName: '',
     email: '',
+    role: '',
     password: ''
   };
 
@@ -21,15 +22,16 @@ export class UserService {
   //HttpMethods
 
   postUser(user: User){
-    return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
+    user.role = "USER";
+    return this.http.post(environment.apiBaseUrl+'/user/register',user,this.noAuthHeader);
   }
 
   login(authCredentials:any) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
+    return this.http.post(environment.apiBaseUrl + '/user/authenticate', authCredentials,this.noAuthHeader);
   }
 
   getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/userProfile');
+    return this.http.get(environment.apiBaseUrl + '/user/userProfile');
   }
 
 
@@ -37,6 +39,8 @@ export class UserService {
 
   setToken(token: string) {
     localStorage.setItem('token', token);
+    console.log(token)
+    this.isLoggedIn()
   }
 
   getToken() {
@@ -64,4 +68,13 @@ export class UserService {
     else
       return false;
   }
+ 
+  isAdmin() {
+    var userPayload = this.getUserPayload();
+    if (userPayload)
+      return userPayload.role == "ADMIN";
+    else
+      return false;
+  }
+
 }
