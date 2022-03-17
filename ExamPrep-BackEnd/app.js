@@ -1,3 +1,4 @@
+
 require('./config/config');
 require('./models/db');
 require('./config/passportConfig');
@@ -10,15 +11,23 @@ const passport = require('passport');
 const rtsIndex = require('./routes/index.router');
 const qaRouter = require('./routes/qaRoute')
 
-var app = express();
 
 // middleware
+const app = express()
+app.use(cors(
+    {origin:'*'}
+))
+
 app.use(bodyParser.json());
-app.use(cors());
 app.use(passport.initialize());
 
-app.use('/api', rtsIndex);
-app.use('/qa', qaRoute);
+app.use('/api/user', rtsIndex);
+app.use("/api/qa", qaRouter)
+
+app.get("/", (req,res)=>{
+    res.send({result: "ok"})
+})
+
 
 // error handler
 app.use((err, req, res, next) => {
@@ -32,5 +41,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-// start server
-app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));
+
+app.listen(3000, _=>console.log(`running on port 3000`))
+
