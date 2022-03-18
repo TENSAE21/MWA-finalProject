@@ -1,7 +1,5 @@
 const dao = require("../dao/qaDao");
 
-
-// get all
 async function getAll(req, res) {
   const ret = await dao.getAll()
   console.log(ret)
@@ -31,10 +29,9 @@ async function deleteOne(req, res) {
 
 // {question:'Which of the following is used to share data between controller and view in Angular?',CA:' A)using Model',CB:'B) using services',
 //CC:'C) using factory',CD:' D) using $scope',Ans:'A'}
-
 module.exports = {
   getAll,
   getById,
   deleteOne,
-  addQuestion
+  addQuestion 
 };
